@@ -1,5 +1,14 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/datapoc-440217/apache-atlas:latest', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-f'
+      - 'docker/Dockerfile'  # Caminho correto do Dockerfile
+      - '-t'
+      - 'gcr.io/datapoc-440217/apache-atlas:latest'
+      - '.'
 images:
-- 'gcr.io/datapoc-440217/apache-atlas:latest'
+  - 'gcr.io/datapoc-440217/apache-atlas:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
